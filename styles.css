@@ -115,6 +115,59 @@ a {
   border-color: var(--accent);
 }
 
+.main-nav .nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.main-nav .submenu-toggle::after {
+  content: "▾";
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.main-nav .submenu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  min-width: 12rem;
+  padding: 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  box-shadow: var(--shadow);
+  transform: translateX(-50%) translateY(0.5rem);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.main-nav .has-submenu:hover .submenu,
+.main-nav .has-submenu:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.main-nav .submenu a {
+  display: block;
+  padding: 0.65rem 0.8rem;
+  border-bottom: 0;
+  border-radius: 0.6rem;
+  white-space: nowrap;
+}
+
+.main-nav .submenu a:hover,
+.main-nav .submenu a:focus {
+  background: rgba(190, 155, 116, 0.12);
+  color: var(--text);
+}
+
 .social-links {
   display: flex;
   align-items: center;
@@ -386,6 +439,24 @@ a {
   .main-nav,
   .social-links {
     justify-content: flex-start;
+  }
+
+  .main-nav .nav-item {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .main-nav .submenu {
+    position: static;
+    width: 100%;
+    margin-top: 0.25rem;
+    transform: none;
+  }
+
+  .main-nav .has-submenu:hover .submenu,
+  .main-nav .has-submenu:focus-within .submenu {
+    transform: none;
   }
 
   .info-card:not(:last-child) {

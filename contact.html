@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <header class="site-header">
+    <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Restoration Church International">
         <div class="brand-mark"></div>
@@ -26,8 +26,7 @@
         <a href="aboutus.html">About Us</a>
         <a href="ministries.html">Ministries</a>
         <a href="events.html">Events</a>
-        <a href="sermons.html">Sermons</a>
-		    <a href="giving.html">Giving</a>
+		<a href="giving.html">Giving</a>			
         <a href="contact.html">Contact</a>
       </nav>
 
@@ -39,12 +38,194 @@
     </div>
   </header>
 
+  <style>
+    /* ── Contact page (scoped additions; uses site design tokens) ── */
+    .contact-intro {
+      padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+    }
+    .contact-intro .eyebrow { margin-bottom: 1.1rem; }
+    .contact-intro h1 {
+      margin: 0 0 1.25rem;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      line-height: 1.0;
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      letter-spacing: -0.01em;
+    }
+    .contact-intro .lead {
+      max-width: 54ch;
+      margin: 0;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .contact-section { padding: 0 0 clamp(4rem, 8vw, 7rem); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: stretch;
+    }
+
+    /* Detail cards */
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    .contact-card {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.6rem 1.75rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(52, 39, 28, 0.12);
+    }
+    .contact-card .icon-circle {
+      font-size: 1.25rem;
+      font-style: normal;
+    }
+    .contact-card .c-body { flex: 1; }
+    .contact-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+    .contact-card .c-value {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .contact-card .c-value a { color: inherit; transition: color 0.18s ease; }
+    .contact-card .c-value a:hover { color: var(--accent-dark); }
+    .contact-card .c-note {
+      margin: 0.45rem 0 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* Map spot */
+    .contact-map {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      min-height: 420px;
+      background:
+        repeating-linear-gradient(45deg, rgba(190,155,116,0.10) 0 16px, rgba(190,155,116,0.04) 16px 32px),
+        var(--surface);
+    }
+    .contact-map img,
+    .contact-map iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 0;
+    }
+    .contact-map .map-hint {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-align: center;
+      color: var(--accent-dark);
+      pointer-events: none;
+    }
+    .contact-map .map-hint .pin { font-size: 2.4rem; line-height: 1; }
+    .contact-map .map-hint span { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; }
+    .contact-map .map-cta {
+      position: absolute;
+      left: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 2;
+    }
+
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-map { min-height: 320px; order: -1; }
+    }
+  </style>
+
 
   <main>
+    <section class="contact-intro">
+      <div class="container">
+        <span class="eyebrow">Get In Touch</span>
+        <h1>We'd love to hear from you</h1>
+        <p class="lead">Whether you're planning your first visit, have a question, or need prayer, our doors and hearts are open. Reach out anytime — we're here for you.</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container contact-grid">
+
+        <div class="contact-details">
+          <div class="contact-card">
+            <i class="icon-circle">⌂</i>
+            <div class="c-body">
+              <h3>Visit Us</h3>
+              <p class="c-value">5136 W. Peoria Ave<br>Glendale, AZ 85302</p>
+              <p class="c-note">Saturday Night Worship · 6:00 PM</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <i class="icon-circle">✉</i>
+            <div class="c-body">
+              <h3>Email Us</h3>
+              <p class="c-value"><a href="mailto:restorationaz.church@gmail.com">restorationaz.church@gmail.com</a></p>
+              <p class="c-note">We'll respond quickly.</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <i class="icon-circle">☎</i>
+            <div class="c-body">
+              <h3>Prayer Line</h3>
+              <p class="c-value"><a href="tel:+16028007896">(602) 800-7896</a></p>
+              <p class="c-note">Available 24 hours — leave a request anytime.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <iframe
+            title="Map to Restoration Church International"
+            src="https://maps.google.com/maps?q=5136%20W%20Peoria%20Ave%2C%20Glendale%20AZ%2085302&amp;z=15&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <a class="btn btn-primary map-cta" href="https://www.google.com/maps/search/?api=1&amp;query=5136+W+Peoria+Ave+Glendale+AZ+85302" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </div>
+
+      </div>
+    </section>
   </main>
 
 
-  <footer class="site-footer" id="contact">
+
+    <footer class="site-footer" id="contact">
     <div class="container footer-grid">
       <div>
         <a href="#" class="brand footer-brand">
@@ -85,5 +266,7 @@
       
     </div>
   </footer>
+
+
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <header class="site-header">
+    <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Restoration Church International">
         <div class="brand-mark"></div>
@@ -26,8 +26,7 @@
         <a href="aboutus.html">About Us</a>
         <a href="ministries.html">Ministries</a>
         <a href="events.html">Events</a>
-        <a href="sermons.html">Sermons</a>
-		    <a href="giving.html">Giving</a>
+		<a href="giving.html">Giving</a>			
         <a href="contact.html">Contact</a>
       </nav>
 
@@ -39,14 +38,445 @@
     </div>
   </header>
 
+<style>
+  :root {
+    --ink:        #1f1c18;
+    --ink-soft:   #4a443c;
+    --ink-mute:   #8a8278;
+    --paper:      #f5efe6;
+    --paper-2:    #ebe3d6;
+    --rule:       #d9cfbe;
+    --gold:       #b08a4a;
+    --gold-deep:  #8a6a34;
+    --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans:  "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+  }
+
+  ::selection { background: var(--gold); color: var(--paper); }
+
+  /* ───────── Hero ───────── */
+  .hero {
+    position: relative;
+    padding: clamp(40px, 7vw, 96px) clamp(24px, 5vw, 64px) 0;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: "";
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 14px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(30px, 5.25vw, 63px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 16ch;
+    color: var(--ink);
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 300;
+  }
+
+  /* ───────── Image / scripture composition ───────── */
+  .scripture-section {
+    padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 64px);
+  }
+  .scripture-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 760px);
+    justify-content: center;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: stretch;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .photo {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    background: var(--paper-2) url("assets/worship.png") center/cover no-repeat;
+    filter: grayscale(0.15) contrast(0.98);
+  }
+  .photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(245,239,230,0.05) 0%, rgba(245,239,230,0.25) 100%);
+    pointer-events: none;
+  }
+  .photo-tag {
+    position: absolute;
+    left: 24px; bottom: 22px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(31,28,24,0.55);
+    backdrop-filter: blur(4px);
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .scripture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 4px;
+  }
+  .verse-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .verse-label::before {
+    content: ""; width: 36px; height: 1px; background: var(--gold);
+  }
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 120px;
+    line-height: 0.5;
+    color: var(--gold);
+    opacity: 0.55;
+    margin: 0 0 -10px -6px;
+    height: 60px;
+    font-style: italic;
+  }
+  blockquote.verse {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(17px, 1.8vw, 23px);
+    line-height: 1.45;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  blockquote.verse em {
+    font-style: italic;
+    color: var(--gold-deep);
+  }
+  blockquote.verse .lord {
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+  }
+  .verse-cite {
+    margin-top: 32px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .verse-cite::before {
+    content: ""; width: 24px; height: 1px; background: var(--ink-soft);
+  }
+
+  /* ───────── Prayer ───────── */
+  .prayer-wrap {
+    background: var(--paper-2);
+    padding: clamp(64px, 9vw, 128px) clamp(24px, 5vw, 64px);
+    position: relative;
+  }
+  .prayer-wrap::before {
+    content: "";
+    position: absolute; left: 50%; top: -1px;
+    width: 1px; height: 56px;
+    background: var(--gold);
+    transform: translateX(-50%);
+  }
+  .prayer {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .prayer-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 28px;
+  }
+  .prayer-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(26px, 3.3vw, 42px);
+    line-height: 1.12;
+    margin: 0 0 48px;
+    color: var(--ink);
+  }
+  .prayer-title em { font-style: italic; color: var(--gold-deep); font-weight: 300; }
+  .prayer p {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(14px, 1.35vw, 18px);
+    line-height: 1.58;
+    color: var(--ink-soft);
+    margin: 0 0 26px;
+    text-wrap: balance;
+  }
+  .prayer .amen {
+    margin-top: 44px;
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(17px, 1.8vw, 23px);
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .prayer .amen::before,
+  .prayer .amen::after {
+    content: "✦";
+    color: var(--gold);
+    font-size: 12px;
+    vertical-align: middle;
+    margin: 0 18px;
+    display: inline-block;
+    transform: translateY(-3px);
+  }
+
+  /* ───────── Give (Venmo / Zelle) ───────── */
+  .give {
+    padding: clamp(56px, 8vw, 112px) clamp(24px, 5vw, 64px);
+    background: var(--paper);
+    position: relative;
+  }
+  .give-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .give-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 18px;
+  }
+  .give-label::before, .give-label::after {
+    content: "";
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 14px;
+  }
+  .give-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .give-title em { font-style: italic; color: var(--gold-deep); font-weight: 300; }
+  .give-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(16px, 1.5vw, 19px);
+    color: var(--ink-soft);
+    margin: 0 auto 56px;
+    max-width: 46ch;
+  }
+
+  .give-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 40px);
+    margin-top: 12px;
+  }
+  .give-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 38px 36px 32px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .give-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    background: #efe7d8;
+  }
+  .give-card::after {
+    content: "↗";
+    position: absolute;
+    top: 28px; right: 30px;
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--gold-deep);
+    transition: transform .25s ease;
+  }
+  .give-card:hover::after { transform: translate(2px, -2px); }
+  .give-method {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+  }
+  .brandmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .brandmark svg {
+    width: 38px; height: 38px;
+    display: block;
+    flex: none;
+    border-radius: 9px;
+    box-shadow: 0 1px 3px rgba(31,28,24,0.14);
+  }
+  .brandmark .bm-word {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .brandmark.venmo .bm-word { color: #008CFF; }
+  .brandmark.zelle .bm-word { color: #6D1ED4; }
+  .give-handle {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .give-handle .h-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .give-handle .h-val {
+    font-family: var(--serif);
+    font-size: clamp(15px, 1.4vw, 18px);
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
+
+  /* ───────── Responsive ───────── */
+  @media (max-width: 860px) {
+    .scripture-grid { grid-template-columns: 1fr; }
+    .give-grid { grid-template-columns: 1fr; }
+  }
+</style>
 
   <main>
-        <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <div class="hero-copy" style="color: #000000">
-		<div style="height: 800px"></div>
 
-  <footer class="site-footer" id="contact">
+
+  <!-- give -->
+  <section class="give">
+    <div class="give-inner">
+      <div class="give-label">Give</div>
+      <h2 class="give-title">Sow into <em>His house</em>.</h2>
+      <p class="give-sub">Choose the way that works best for you. Every gift, large or small, is received with thanksgiving.</p>
+
+      <div class="give-grid">
+        <a class="give-card" href="https://venmo.com/u/restorationint" target="_blank" rel="noopener">
+          <div class="give-method">Mobile · Instant</div>
+          <span class="brandmark venmo" aria-label="Venmo">
+            <svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="9" fill="#fff"/><path d="M25.6 9.4c.55.9.8 1.83.8 3.01 0 3.76-3.21 8.64-5.81 12.07h-5.95L8.27 10.6l5.2-.49 1.27 10.17c1.18-1.93 2.64-4.95 2.64-7.02 0-1.13-.2-1.9-.5-2.53l8.72-.32z" fill="#008CFF"/></svg>
+            <span class="bm-word">venmo</span>
+          </span>
+          <div class="give-handle">
+            <span class="h-label">Send to</span>
+            <span class="h-val">@restorationint</span>
+          </div>
+        </a>
+
+        <a class="give-card" href="mailto:restorationaz.church@gmail.com?subject=Zelle%20Gift" target="_blank" rel="noopener">
+          <div class="give-method">Bank · No fees</div>
+          <span class="brandmark zelle" aria-label="Zelle">
+            <svg viewBox="0 0 38 38" aria-hidden="true"><rect width="38" height="38" rx="9" fill="#6D1ED4"/><path d="M19 7.3c.6 0 1.08.48 1.08 1.08v1.3h2.96c.55 0 1 .45 1 1 0 .24-.08.46-.23.64l-6.4 8.06h5.5c.56 0 1.01.45 1.01 1.01s-.45 1.01-1.01 1.01h-2.83v1.31c0 .6-.48 1.08-1.08 1.08s-1.08-.48-1.08-1.08v-1.31h-3.05c-.55 0-1-.45-1-1 0-.24.08-.46.23-.64l6.4-8.06h-5.54c-.56 0-1.01-.45-1.01-1.01s.45-1.01 1.01-1.01h2.96v-1.3c0-.6.48-1.08 1.08-1.08z" fill="#fff"/></svg>
+            <span class="bm-word">zelle</span>
+          </span>
+          <div class="give-handle">
+            <span class="h-label">Send to</span>
+            <span class="h-val">restorationaz.church@gmail.com</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- scripture + image -->
+  <section class="scripture-section">
+    <div class="scripture-grid">
+      <div class="scripture">
+        <div class="verse-label">Scripture</div>
+        <div class="quote-mark">“</div>
+        <blockquote class="verse">
+          Bring all the tithes into the storehouse, that there may be food in My house, and try Me now in this,” says the <span class="lord">Lord</span> of hosts, “<em>If I will not open for you the windows of heaven and pour out for you such blessing that there will not be room enough to receive it.</em>
+        </blockquote>
+        <div class="verse-cite">Malachi 3 : 10</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- prayer -->
+  <section class="prayer-wrap">
+    <div class="prayer">
+      <div class="prayer-label">A Prayer of Offering</div>
+      <h2 class="prayer-title">As we present our offerings to You, we are reminded of <em>Your great love</em> for us.</h2>
+
+      <p>Help us to reflect Your love in all that we do, even in our giving.</p>
+      <p>May these gifts be used to spread Your love to others, bringing hope and healing to a world in need.</p>
+
+      <div class="amen">Lord, Your love never fails.</div>
+    </div>
+  </section>
+</main>
+
+    <footer class="site-footer" id="contact">
     <div class="container footer-grid">
       <div>
         <a href="#" class="brand footer-brand">
@@ -87,5 +517,7 @@
       
     </div>
   </footer>
+
+
 </body>
 </html>

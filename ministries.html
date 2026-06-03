@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <header class="site-header">
+    <header class="site-header">
     <div class="container nav-wrap">
       <a href="index.html" class="brand" aria-label="Restoration Church International">
         <div class="brand-mark"></div>
@@ -26,8 +26,7 @@
         <a href="aboutus.html">About Us</a>
         <a href="ministries.html">Ministries</a>
         <a href="events.html">Events</a>
-        <a href="sermons.html">Sermons</a>
-		    <a href="giving.html">Giving</a>
+		<a href="giving.html">Giving</a>			
         <a href="contact.html">Contact</a>
       </nav>
 
@@ -40,30 +39,174 @@
   </header>
 
 
+
   <main>
-<section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <div class="hero-copy" style="color: #000000">
-  <p><b>Prayer</b>
-Experience the transformative power of God's love at Restoration Church's uplifting and inspiring Sunday services. Join us as we come together in worship and fellowship, creating a welcoming and inclusive space for spiritual growth and connection.</p>
+  
+    <style>
+    .ministries-intro {
+      padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+    }
+    .ministries-intro .eyebrow {
+      margin-bottom: 1.1rem;
+    }
+    .ministries-intro h1 {
+      margin: 0 0 1.5rem;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      line-height: 1.0;
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      letter-spacing: -0.01em;
+      max-width: 20ch;
+    }
+    .ministries-intro .lead {
+      max-width: 54ch;
+      margin: 0;
+      font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+      color: var(--muted);
+    }
+    .ministries-intro .rule {
+      width: 64px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 999px;
+      margin: 0 0 2rem;
+    }
 
-<p><b>Community Support</b>
-At Restoration Church, we are committed to supporting our community in times of need. Our outreach initiatives aim to provide assistance and resources to those facing challenges, ensuring that everyone feels valued, supported, and embraced by the love of God.</p>
+    .ministries-section {
+      padding: 0 0 clamp(4rem, 8vw, 7rem);
+    }
+    .ministries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+    }
 
-<p><b>Volunteer Opportunities</b>
-Explore the various volunteer opportunities at Restoration Church and make a difference in the lives of others. Whether it's serving in the community, assisting with events, or joining our outreach programs, there's a place for you to contribute and serve with love and compassion.</p>
+    .ministry-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      padding: clamp(2rem, 3vw, 2.75rem);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      overflow: hidden;
+    }
+    .ministry-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0;
+      width: 4px; height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .ministry-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 60px rgba(52, 39, 28, 0.13);
+    }
+    .ministry-card:hover::before { opacity: 1; }
 
-<p><b>Get Involved</b>
-Ready to make a lasting impact and spread the message of hope and salvation? Join us at Restoration Church in our mission to bring hope, healing, and restoration to individuals and families. Together, we can create a stronger, more connected community that uplifts and supports each other.</div></p>
-</div>
-</div>
-</div>
-</section>
+    .ministry-index {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      line-height: 1;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .ministry-index::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .ministry-card h2 {
+      margin: 0 0 0.85rem;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+      line-height: 1.05;
+      color: var(--text);
+    }
+    .ministry-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    /* Featured call-to-action card */
+    .ministry-card.cta {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      border-color: transparent;
+      color: #fff;
+    }
+    .ministry-card.cta::before { display: none; }
+    .ministry-card.cta .ministry-index { color: rgba(255, 255, 255, 0.85); }
+    .ministry-card.cta .ministry-index::after { background: rgba(255, 255, 255, 0.35); }
+    .ministry-card.cta h2 { color: #fff; }
+    .ministry-card.cta p { color: rgba(255, 255, 255, 0.92); }
+    .ministry-card.cta .btn {
+      margin-top: 1.75rem;
+      align-self: flex-start;
+      background: #fff;
+      color: var(--accent-dark);
+      box-shadow: 0 10px 24px rgba(52, 39, 28, 0.18);
+    }
+    .ministry-card.cta .btn:hover { background: #fbf7f2; }
+
+    @media (max-width: 760px) {
+      .ministries-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+    <section class="ministries-intro">
+      <div class="container">
+        <span class="eyebrow">What We Do</span>
+        <h1>Find your place to belong &amp; serve</h1>
+        <div class="rule"></div>
+        <p class="lead">From worship and prayer to outreach and hands-on service, our ministries are how we live out our mission together — bringing hope, healing, and restoration to our community.</p>
+      </div>
+    </section>
+
+    <section class="ministries-section">
+      <div class="container ministries-grid">
+
+        <article class="ministry-card">
+          <div class="ministry-index">01</div>
+          <h2>Prayer</h2>
+          <p>Experience the transformative power of God's love at Restoration Church's uplifting and inspiring Sunday services. Join us as we come together in worship and fellowship, creating a welcoming and inclusive space for spiritual growth and connection.</p>
+        </article>
+
+        <article class="ministry-card">
+          <div class="ministry-index">02</div>
+          <h2>Community Support</h2>
+          <p>At Restoration Church, we are committed to supporting our community in times of need. Our outreach initiatives aim to provide assistance and resources to those facing challenges, ensuring that everyone feels valued, supported, and embraced by the love of God.</p>
+        </article>
+
+        <article class="ministry-card">
+          <div class="ministry-index">03</div>
+          <h2>Volunteer Opportunities</h2>
+          <p>Explore the various volunteer opportunities at Restoration Church and make a difference in the lives of others. Whether it's serving in the community, assisting with events, or joining our outreach programs, there's a place for you to contribute and serve with love and compassion.</p>
+        </article>
+
+        <article class="ministry-card cta">
+          <div class="ministry-index">04</div>
+          <h2>Get Involved</h2>
+          <p>Ready to make a lasting impact and spread the message of hope and salvation? Join us in our mission to bring hope, healing, and restoration to individuals and families. Together, we can create a stronger, more connected community.</p>
+          <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        </article>
+
+      </div>
+    </section>
   </main>
 
 
-  <footer class="site-footer" id="contact">
+    <footer class="site-footer" id="contact">
     <div class="container footer-grid">
       <div>
         <a href="#" class="brand footer-brand">
@@ -104,5 +247,7 @@ Ready to make a lasting impact and spread the message of hope and salvation? Joi
       
     </div>
   </footer>
+
+
 </body>
 </html>
