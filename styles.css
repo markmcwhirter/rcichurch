@@ -143,7 +143,18 @@ a {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  transition: opacity 0.2s ease 0.15s, transform 0.2s ease 0.15s, visibility 0.2s ease 0.15s;
+}
+
+/* Invisible bridge over the gap between the toggle and the dropdown,
+   so the menu stays open while the mouse travels down into it */
+.main-nav .submenu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.85rem;
+  height: 0.85rem;
 }
 
 .main-nav .has-submenu:hover .submenu,
@@ -152,6 +163,7 @@ a {
   visibility: visible;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
 }
 
 .main-nav .submenu a {
@@ -447,11 +459,28 @@ a {
     flex-direction: column;
   }
 
+  /* On small screens show submenu items inline (no hover on touch) */
   .main-nav .submenu {
     position: static;
     width: 100%;
     margin-top: 0.25rem;
     transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0 0 0 0.9rem;
+  }
+
+  .main-nav .submenu::before {
+    content: none;
+  }
+
+  .main-nav .submenu-toggle::after {
+    content: "";
+    margin-left: 0;
   }
 
   .main-nav .has-submenu:hover .submenu,
@@ -468,11 +497,40 @@ a {
     min-height: 620px;
     background-position: center right;
   }
+
+  .nav-wrap {
+    min-height: 0;
+  }
+
+  .main-nav {
+    gap: 0.9rem 1.4rem;
+  }
+
+  .welcome-section {
+    padding: 4rem 0;
+  }
+
+  .welcome-image img {
+    min-height: 280px;
+  }
 }
 
 @media (max-width: 640px) {
   .brand-name {
     font-size: 1.55rem;
+  }
+
+  .main-nav {
+    gap: 0.6rem 1.1rem;
+    font-size: 0.95rem;
+  }
+
+  .info-card {
+    padding: 1.4rem;
+  }
+
+  .btn {
+    width: 100%;
   }
 
   .hero {
