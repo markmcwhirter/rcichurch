@@ -60,6 +60,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/announcements.css" />
 </head>
 
 <body>
@@ -103,140 +104,6 @@
 
 
 
-  <style>
-    /* ── Announcements page (scoped additions; uses site design tokens) ── */
-    .ann-intro {
-      padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
-    }
-    .ann-intro .eyebrow { margin-bottom: 1.1rem; }
-    .ann-intro h1 {
-      margin: 0 0 1.25rem;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 600;
-      line-height: 1.0;
-      font-size: clamp(2.8rem, 6vw, 4.6rem);
-      letter-spacing: -0.01em;
-    }
-    .ann-intro .lead {
-      max-width: 54ch;
-      margin: 0;
-      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-      line-height: 1.7;
-      color: var(--muted);
-    }
-
-    .ann-section { padding: 0 0 clamp(4rem, 8vw, 7rem); }
-
-    .ann-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: clamp(1.5rem, 3vw, 2.5rem);
-    }
-
-    .ann-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-    }
-    .ann-card {
-      flex: 1 1 290px;
-      max-width: 600px;
-    }
-    .ann-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 26px 60px rgba(52, 39, 28, 0.14);
-    }
-
-    /* Image area — locked to a 600 × 800 (3:4 portrait) ratio */
-    .ann-media {
-      position: relative;
-      aspect-ratio: 600 / 800;
-      width: 100%;
-      background:
-        repeating-linear-gradient(45deg, rgba(190,155,116,0.10) 0 16px, rgba(190,155,116,0.04) 16px 32px),
-        var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
-    .ann-media img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .ann-media .media-hint {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      color: var(--accent-dark);
-      text-align: center;
-    }
-    .ann-media .media-hint .frame {
-      font-size: 1.9rem;
-      line-height: 1;
-    }
-    .ann-media .media-hint span {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .ann-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      padding: clamp(1.4rem, 2.2vw, 1.9rem);
-      flex: 1;
-    }
-    .ann-date {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-dark);
-    }
-    .ann-date::before {
-      content: "";
-      width: 0.55rem; height: 0.55rem;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-    .ann-body h3 {
-      margin: 0;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 600;
-      font-size: clamp(1.5rem, 2.4vw, 1.95rem);
-      line-height: 1.1;
-      color: var(--text);
-    }
-    .ann-body p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.65;
-    }
-    .ann-body .btn {
-      margin-top: auto;
-      align-self: flex-start;
-      padding: 0.7rem 1.25rem;
-    }
-  </style>
 
 
 

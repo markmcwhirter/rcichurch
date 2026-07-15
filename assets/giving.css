@@ -1,0 +1,369 @@
+  :root {
+    --ink:        #1f1c18;
+    --ink-soft:   #4a443c;
+    --ink-mute:   #8a8278;
+    --paper:      #f5efe6;
+    --paper-2:    #ebe3d6;
+    --rule:       #d9cfbe;
+    --gold:       #b08a4a;
+    --gold-deep:  #8a6a34;
+    --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans:  "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+  }
+
+  ::selection { background: var(--gold); color: var(--paper); }
+
+  /* ───────── Hero ───────── */
+  .hero {
+    position: relative;
+    padding: clamp(40px, 7vw, 96px) clamp(24px, 5vw, 64px) 0;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: "";
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 14px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(30px, 5.25vw, 63px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 16ch;
+    color: var(--ink);
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 300;
+  }
+
+  /* ───────── Image / scripture composition ───────── */
+  .scripture-section {
+    padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 64px);
+  }
+  .scripture-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 760px);
+    justify-content: center;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: stretch;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .photo {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    background: var(--paper-2) url("worship.png") center/cover no-repeat;
+    filter: grayscale(0.15) contrast(0.98);
+  }
+  .photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(245,239,230,0.05) 0%, rgba(245,239,230,0.25) 100%);
+    pointer-events: none;
+  }
+  .photo-tag {
+    position: absolute;
+    left: 24px; bottom: 22px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(31,28,24,0.55);
+    backdrop-filter: blur(4px);
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .scripture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 4px;
+  }
+  .verse-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .verse-label::before {
+    content: ""; width: 36px; height: 1px; background: var(--gold);
+  }
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 120px;
+    line-height: 0.5;
+    color: var(--gold);
+    opacity: 0.55;
+    margin: 0 0 -10px -6px;
+    height: 60px;
+    font-style: italic;
+  }
+  blockquote.verse {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(17px, 1.8vw, 23px);
+    line-height: 1.45;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  blockquote.verse em {
+    font-style: italic;
+    color: var(--gold-deep);
+  }
+  blockquote.verse .lord {
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+  }
+  .verse-cite {
+    margin-top: 32px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .verse-cite::before {
+    content: ""; width: 24px; height: 1px; background: var(--ink-soft);
+  }
+
+  /* ───────── Prayer ───────── */
+  .prayer-wrap {
+    background: var(--paper-2);
+    padding: clamp(64px, 9vw, 128px) clamp(24px, 5vw, 64px);
+    position: relative;
+  }
+  .prayer-wrap::before {
+    content: "";
+    position: absolute; left: 50%; top: -1px;
+    width: 1px; height: 56px;
+    background: var(--gold);
+    transform: translateX(-50%);
+  }
+  .prayer {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .prayer-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 28px;
+  }
+  .prayer-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(26px, 3.3vw, 42px);
+    line-height: 1.12;
+    margin: 0 0 48px;
+    color: var(--ink);
+  }
+  .prayer-title em { font-style: italic; color: var(--gold-deep); font-weight: 300; }
+  .prayer p {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(14px, 1.35vw, 18px);
+    line-height: 1.58;
+    color: var(--ink-soft);
+    margin: 0 0 26px;
+    text-wrap: balance;
+  }
+  .prayer .amen {
+    margin-top: 44px;
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(17px, 1.8vw, 23px);
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .prayer .amen::before,
+  .prayer .amen::after {
+    content: "✦";
+    color: var(--gold);
+    font-size: 12px;
+    vertical-align: middle;
+    margin: 0 18px;
+    display: inline-block;
+    transform: translateY(-3px);
+  }
+
+  /* ───────── Give (Venmo / Zelle) ───────── */
+  .give {
+    padding: clamp(56px, 8vw, 112px) clamp(24px, 5vw, 64px);
+    background: var(--paper);
+    position: relative;
+  }
+  .give-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .give-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 18px;
+  }
+  .give-label::before, .give-label::after {
+    content: "";
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 14px;
+  }
+  .give-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .give-title em { font-style: italic; color: var(--gold-deep); font-weight: 300; }
+  .give-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(16px, 1.5vw, 19px);
+    color: var(--ink-soft);
+    margin: 0 auto 56px;
+    max-width: 46ch;
+  }
+
+  .give-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 40px);
+    margin-top: 12px;
+  }
+  .give-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 38px 36px 32px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .give-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    background: #efe7d8;
+  }
+  .give-card::after {
+    content: "↗";
+    position: absolute;
+    top: 28px; right: 30px;
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--gold-deep);
+    transition: transform .25s ease;
+  }
+  .give-card:hover::after { transform: translate(2px, -2px); }
+  .give-method {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+  }
+  .brandmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .brandmark svg {
+    width: 38px; height: 38px;
+    display: block;
+    flex: none;
+    border-radius: 9px;
+    box-shadow: 0 1px 3px rgba(31,28,24,0.14);
+  }
+  .brandmark .bm-word {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .brandmark.venmo .bm-word { color: #008CFF; }
+  .brandmark.zelle .bm-word { color: #6D1ED4; }
+  .give-handle {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .give-handle .h-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .give-handle .h-val {
+    font-family: var(--serif);
+    font-size: clamp(15px, 1.4vw, 18px);
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
+
+  /* ───────── Responsive ───────── */
+  @media (max-width: 860px) {
+    .scripture-grid { grid-template-columns: 1fr; }
+    .give-grid { grid-template-columns: 1fr; }
+  }
